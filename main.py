@@ -1,15 +1,15 @@
 import json
 import requests
-from bs4 import BeautifulSoup
 from fake_headers import Headers
-import time
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
+
+
+MAX_PAGE = 1
 
 
 def get_headers():
@@ -52,7 +52,7 @@ def parse_page(page_num):
 
 if __name__ == '__main__':
     res = []
-    for page in range(0, 1):
+    for page in range(0, MAX_PAGE):
         print('Number of page:', page)
         parsed = parse_page(page)
         if parsed:
